@@ -109,7 +109,6 @@ extension LocationManager: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         self.locationStatus = status
-        print(#function, statusString)
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -125,9 +124,11 @@ extension LocationManager: CLLocationManagerDelegate {
         content.subtitle = "Did You Wear Your Mask?"
         content.body = "We have detected that you have left \(region.identifier). Did you wear your mask?"
         content.sound = .default
+        
         let center =  UNUserNotificationCenter.current()
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let request = UNNotificationRequest(identifier: "ContentIdentifier", content: content, trigger: trigger)
+        
         center.add(request)
     }
 }

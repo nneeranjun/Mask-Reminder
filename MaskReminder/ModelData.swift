@@ -32,6 +32,7 @@ final class ModelData: ObservableObject {
                 throw SaveError.DuplicateLocation
             }
         }
+        
         locations.append(location)
         
         let encoder = JSONEncoder()
@@ -46,6 +47,7 @@ final class ModelData: ObservableObject {
         if index < 0 || index >= locations.count {
             throw DeleteError.NonExistant
         }
+        
         locations.remove(at: index)
         
         let encoder = JSONEncoder()
